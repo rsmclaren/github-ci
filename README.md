@@ -15,7 +15,7 @@
 - Click on the first link in the table
 - Click the "Start Lab" button
 - Click the "AWS" link after the circle turns green
-- In the Search box at the top of the screen click "Services" and type "EC2"
+- Using the Search box at the top of the screen search for "EC2"
 - Click the "EC2" link
 - Click the "Launch instance" button
 - Give your instance the name "Github-Actions"
