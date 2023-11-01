@@ -178,7 +178,7 @@ deploy:
         SSH_PRIVATE_KEY: ${{secrets.EC2_SSH_KEY}}
         REMOTE_HOST: ${{secrets.REMOTE_HOST}}
         REMOTE_USER: ${{secrets.REMOTE_USER}}
-        TARGET: ${{secrets.TARGET_DIR}}
+        TARGET: ${{secrets.TARGET}}
 # this job will run composer install on our EC2 instance
 composer:
   name: Run composer install on EC2 instance
