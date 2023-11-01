@@ -11,8 +11,6 @@
 - Log into [AWS Academy](https://awsacademy.instructure.com/)
 - Navigate to Courses and select the AWS Academy Learner Lab
 - Navigate to Modules and click the "Launch AWS Academy Learner Lab" button
-- Click the Home button
-- Click on the first link in the table
 - Click the "Start Lab" button
 - Click the "AWS" link after the circle turns green
 - Using the Search box at the top of the screen search for "EC2"
