@@ -154,7 +154,7 @@ jobs:
 | EC2_SSH_KEY | copy/paste the contents of your .pem file |
 | REMOTE_HOST | copy/paste your EC2s IPv4 address         |
 | REMOTE_USER | ubuntu                                    |
-| TARGET      | var/www/html                              |
+| TARGET      | /var/www/html                              |
 
 - add the following to your workflow file, tabbed under the `jobs` section
 - the tabbing of the code is important!!
@@ -176,8 +176,8 @@ deploy:
       # the runner needs to connect to our EC2 server so its needs to know the host, username, and key file so it can connect. It is using the values we defined as secrets in the previous step
       env: 
         SSH_PRIVATE_KEY: ${{secrets.EC2_SSH_KEY}}
-        REMOTE_HOST: ${{secrets.HOST_DNS}}
-        REMOTE_USER: ${{secrets.USERNAME}}
+        REMOTE_HOST: ${{secrets.REMOTE_HOST}}
+        REMOTE_USER: ${{secrets.REMOTE_USER}}
         TARGET: ${{secrets.TARGET_DIR}}
 # this job will run composer install on our EC2 instance
 composer:
@@ -189,11 +189,11 @@ composer:
     - name: execute composer install
       uses: appleboy/ssh-action@v1.0.0
       with:
-        host: ${{secrets.HOST_DNS}}
-        username: ${{secrets.USERNAME}}
+        host: ${{secrets.REMOTE_HOST}}
+        username: ${{secrets.REMOTE_USER}}
         key: ${{secrets.EC2_SSH_KEY}}
         script: |
-          cd ${{secrets.TARGET_DIR}}
+          cd ${{secrets.TARGET}}
           composer install
 ```
 
