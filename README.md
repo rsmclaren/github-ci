@@ -148,6 +148,7 @@ jobs:
 - Before we update our workflow file, we need to configure some secrets in our repo on Github
 - Navigate to the settings tab of your repo, and select secrets > actions. click new repository secret button
 - add the following 4 secrets:
+- Make sure there is no trailing whitespace in any of the values when you copy/paste them
   
 | Name        | Secret                                    |
 |-------------|-------------------------------------------|
