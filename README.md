@@ -212,3 +212,6 @@ if (!filter_var($email, FILTER_VALIDATE_IP)) {
 - commit and push your changes to Github
 - navigate to the actions tab of your repo and you should see your workflow run but this time the tests will fail and the other steps will not run
 - You will also receive an email from Github notifying you that your tests failed
+
+## Note about AWS Academy EC2 Instance
+When you first create your EC2 instance an IP address is randomly assigned to it. If you stop and start your instance, the IP address will change. If you terminate your instance and create a new one, the IP address will change. This means you will need to update your REMOTE_HOST secret key on your GitHub Repo with the new IP address. You can find the IP address of your EC2 instance by navigating to the EC2 service in the AWS console and clicking on your instance. The IP address will be displayed in the Description tab of the instance.
