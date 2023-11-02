@@ -1,0 +1,35 @@
+# first we define our action name 
+name: CI
+
+# Trigger deployment only on push to main branch, and allow manual triggering
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+# now we define the jobs we want to run - this section defines the jobs that will run as part of the workflow
+jobs:
+  build-test:
+    # name is the human friendly name for the job
+    name: Run Unit Tests
+    # this is the type of virtual machine that the job will run on - jobs are handled by "runners", which is just a # virtual machine. Github hosts runners, which will we utilize, but it is possible to use self hosted runners # as well
+    runs-on: ubuntu-latest
+    # our jobs contains a sequence of actions, known as steps          
+    steps:
+      # uses - we are specifiying an action to run as part of our step. actions are custom applications that perform complex but frequently repeated task. this action will checkout our repository code to the runner
+      - uses: actions/checkout@v3
+
+      # this step will install composer dependencies (composer is a php package manager)
+      - uses: php-actions/composer@v6
+
+      # this step will run our phpunit tests
+      - name: PHPUnit Tests
+        uses: php-actions/phpunit@master
+        env:
+          TEST_NAME: Scarlett
+        with:
+          version: 9.6
+          bootstrap: vendor/autoload.php
+          configuration: test/phpunit.xml
+          args: --coverage-text
